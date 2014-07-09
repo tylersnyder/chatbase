@@ -1,0 +1,329 @@
+/*******************************************************
+  Edit/add styles in style.scss,
+  compile on your machine (http://sass-lang.com/install)
+  or online at http://sassmeister.com/
+*******************************************************/
+@import "compass/reset";
+@import "emoji";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.clearfix {
+  float: left;
+
+  &:before,
+  &:after {
+    display: block;
+    clear: both;
+  }
+}
+
+body {
+  max-width: 480px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: #eee;
+  font-family: "Proxima Nova", "proxima-nova", "Helvetica", "Arial", sans-serif;
+  color: #444;
+  text-align: center;
+
+  &.open {
+    overflow: hidden;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: dodgerblue;
+  transition: color 0.2s ease;
+  &:hover {
+    color: #1a58aa;
+  }
+}
+
+p {
+  line-height: 1.7;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+h2 {
+  margin: 0 0 5px;
+}
+
+h3 {
+  margin: 10px 0 20px;
+}
+
+.button {
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: none;
+  background-color: dodgerblue;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+
+  &.default {
+    background-color: #bbb;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+
+  &.login:not(.hide) {
+    margin: 0 auto;
+    width: 33%;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &.logout:not(.hide) {
+    margin: 20px auto 0;
+    @extend .clearfix;
+  }
+
+  &[data-chat=send] {
+    width: 100%;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.form {
+  margin: 0;
+
+  label {
+    display: block;
+  }
+
+  input[type=text],
+  input[type=email],
+  select {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 8px;
+    display: block;
+    border: solid 1px #ddd;
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    box-shadow: 1px 1px 1px #ddd inset;
+    font-family: inherit;
+    font-size: 16px;
+    color: #666;
+
+    &.error {
+      box-shadow: 1px 1px 1px pink inset;
+      border-color: tomato;
+    }
+  }
+
+  .error {
+    color: tomato;
+    float: right;
+
+    &:before {
+      content: '*';
+      padding-right: 3px;
+    }
+  }
+}
+
+footer {
+  padding: 20px 0;
+  font-size: 12px;
+  @extend .clearfix;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+
+  ul li {
+    padding-right: 10px;
+    display: inline-block;
+  }
+
+  .copyright {
+    float: right;
+  }
+}
+
+.chat {
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: left;
+
+  .form {
+    width: 100%;
+    margin: 0px auto;
+    padding: 20px;
+    display: inline-block;
+    background-color: #fff;
+    border-top: solid 1px #ddd;
+    border-left: solid 1px #ddd;
+    border-radius: 3px;
+    box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .chat-box {
+    position: relative;
+    width: 100%;
+    max-height: 400px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    border: solid 1px #ddd;
+    overflow-y: scroll;
+    @extend .clearfix;
+
+    .message {
+      margin-bottom: 5px;
+      padding: 5px 10px;
+      border-radius: 10px;
+      background-color: #ddd;
+      color: #333;
+      width: 67%;
+      clear: both;
+      word-wrap: break-word;
+      float: left;
+
+      &[data-self=true] {
+        background-color: dodgerblue;
+        color: #fff;
+        float: right;
+      }
+    }
+
+    .user {
+      display: block;
+      padding: 5px;
+      border-radius: 4px;
+      background-color: #fff;
+      color: dodgerblue;
+      font-weight: bold;
+      font-size: 13px;
+      clear: both;
+
+      &[data-self=true]  {
+        color: dodgerblue;
+        float: right;
+        display:block;
+      }
+    }
+
+    [data-timestamp]:hover:after {
+      content: attr(title);
+      padding-left: 5px;
+      display: inline-block;
+      font-size: 11px;
+    }
+  }
+
+  .text {
+    word-wrap: break-word;
+    max-width: 250px;
+  }
+
+  .emoji-box {
+    margin-bottom: 10px;
+    @extend .clearfix;
+
+    .emoji {
+      float: left;
+    }
+  }
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  text-align: center;
+
+  .message {
+    position: relative;
+    top: 20px;
+    font-size: 18px;
+    max-width: 250px;
+  }
+}
+
+.spinner {
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
+  border-radius: 100%;
+  border: 6px solid transparent;
+  border-color: #eee #eee #444 #444;
+  background-color: transparent;
+  -webkit-animation: spinner 1s linear 0s infinite normal;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: spinner 1s linear 0s infinite normal;
+  -moz-transform-origin: 50% 50%;
+  animation: spinner 1s linear 0s infinite normal;
+  transform-origin: 50% 50%;
+  transition: all 0.1s ease-in;
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -ms-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}

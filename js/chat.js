@@ -45,9 +45,9 @@ var chat = function(user) {
           count++;
 
           var timestamp =$(this).get(0).timestamp ,
-              text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
-  return "&#" + c.charCodeAt() + ";";
-}); + '</span>',
+               text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
+                 return "&#" + c.charCodeAt() + ";";
+              }); + '</span>',
               self = user.displayName;
 
           if (self == $(this).get(0).user) {
@@ -69,40 +69,28 @@ var chat = function(user) {
           prev = $(this).get(0).user;
         })
 
+        var ping = new Audio('iphone-sms.mp3');
+        ping.play();
         chat.scroll('to-bottom');
       }
     })
   }
 
   this.send = function() {
-    //chat.spinner('show', 'Sending message...');
     var message = $('#chat-message').val();
 
-    function preventInjection() {
-      var $trimmed = message.trim().toLowerCase();
+    if (preventInjection(message) == true) {
+      messages.push({
+        'date': d,
+        'timestamp': t,
+        'user': user.displayName,
+        'message': message
+      })
 
-      if ($trimmed.indexOf('<script') > -1 || $trimmed.indexOf('script>') > -1) {
-        alert('No script injection.');
-        return false;
-      } else if ($trimmed.indexOf('type=') > -1 && $trimmed.indexOf('text/javascript') > -1) {
-        alert('No script injection.');
-        return false;
-      } else {
-        return true;
-      }
-    };
-
-    messages.push({
-      'date': d,
-      'timestamp': t,
-      'user': user.displayName,
-      'message': message
-    })
-
-    window.setTimeout(function() {
-      //chat.spinner('hide');
-      chat.form('reset');
-    }, 500);
+      window.setTimeout(function() {
+        chat.form('reset');
+      }, 500);
+    }
   }
 
   this.bind = function(selector, data) {
@@ -192,3 +180,15 @@ $('[data-chat=send]').click(function (e) {
     chat.send();
   }
 });
+
+function preventInjection(message) {
+  var $trimmed = message.trim().toLowerCase();
+
+  if ($trimmed.indexOf('<script') > -1 || $trimmed.indexOf('script>') > -1) {
+    return false;
+  } else if ($trimmed.indexOf('type=') > -1 && $trimmed.indexOf('text/javascript') > -1) {
+    return false;
+  } else {
+    return true;
+  }
+};
