@@ -45,7 +45,9 @@ var chat = function(user) {
           count++;
 
           var timestamp =$(this).get(0).timestamp ,
-              text = '<span class="text">' + $(this).get(0).message + '</span>',
+              text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
+  return "&#" + c.charCodeAt() + ";";
+}); + '</span>',
               self = user.displayName;
 
           if (self == $(this).get(0).user) {
