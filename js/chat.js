@@ -1,7 +1,7 @@
+var count = 0;
 var messages = new Firebase(firebaseURL + '/chat/messages');
-
 var chat = function(user) {
-  var count = 0;
+  count = 0;
 
   this.init = function() {
     $('.chat').removeClass('hide');
@@ -30,11 +30,16 @@ var chat = function(user) {
 
   this.get = function() {
     messages.on('value', function(snapshot) {
-      if (count == 0 | Object.size(snapshot.val()) > count) {
-        chatbox.empty();
+      //console.log(snapshot.val());
+      //console.log('length: '  + Object.size(snapshot.val()));
+	    //console.log('count: ' + count);
+	    //console.log(JSON.stringify(snapshot.val()));
 
-        count = 0;
-        var prev='';
+  	  if (count == 0 | Object.size(snapshot.val()) > count) {
+    	  //console.log('new message');
+    	  chatbox.empty();
+    		count = 0;
+        var prev = '';
 
         $.each(snapshot.val(), function() {
           count++;
@@ -50,7 +55,7 @@ var chat = function(user) {
           }
 
           if (count != 0 && $(this).get(0).user == prev) {
-            name='';
+            name = '';
           }
 
           if (self == $(this).get(0).user) {
@@ -64,20 +69,32 @@ var chat = function(user) {
 
         chat.scroll('to-bottom');
       }
-
     })
-
-
   }
 
   this.send = function() {
     //chat.spinner('show', 'Sending message...');
+    var message = $('#chat-message').val();
+
+    function preventInjection() {
+      var $trimmed = message.trim().toLowerCase();
+
+      if ($trimmed.indexOf('<script') > -1 || $trimmed.indexOf('script>') > -1) {
+        alert('No script injection.');
+        return false;
+      } else if ($trimmed.indexOf('type=') > -1 && $trimmed.indexOf('text/javascript') > -1) {
+        alert('No script injection.');
+        return false;
+      } else {
+        return true;
+      }
+    };
 
     messages.push({
       'date': d,
       'timestamp': t,
       'user': user.displayName,
-      'message': $('#chat-message').val()
+      'message': message
     })
 
     window.setTimeout(function() {

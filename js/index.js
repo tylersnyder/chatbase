@@ -2,7 +2,7 @@ try {
   Typekit.load();
 } catch(e) { }
 
-var firebaseURL = 'https://****.firebaseio.com';
+var firebaseURL = 'https://torid-fire-3356.firebaseio.com';
 
 $.h5Validate.addPatterns({
   date: /^((0?[1-9]|1[012])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)?[0-9]{2})*$/,
@@ -14,9 +14,9 @@ $.h5Validate.addPatterns({
 $('.chat .form').h5Validate();
 
 Object.size = function(obj) {
-  var size = 0, key;
-  for (key in obj) {
-    if (obj.hasOwnProperty(key)) size++;
-  }
-  return size;
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
 };

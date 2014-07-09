@@ -34,8 +34,6 @@ body {
   padding: 20px;
   margin: 0 auto;
   background-color: #eee;
-  background-image: url('https://s3.amazonaws.com/ooomf-com-files/tU3ptNgGSP6U2fE67Gvy_SYDNEY-162.jpg');
-  background-size: cover;
   font-family: "Proxima Nova", "proxima-nova", "Helvetica", "Arial", sans-serif;
   color: #444;
   text-align: center;
@@ -47,7 +45,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #608bc5;
+  color: dodgerblue;
   transition: color 0.2s ease;
   &:hover {
     color: #1a58aa;
@@ -61,7 +59,6 @@ p {
 h1 {
   font-size: 48px;
   margin: 0;
-  color: #fdfdfd;
 }
 
 h2 {
@@ -70,7 +67,6 @@ h2 {
 
 h3 {
   margin: 10px 0 20px;
-  color: #fdfdfd;
 }
 
 .button {
@@ -78,7 +74,7 @@ h3 {
   padding: 10px 20px;
   border-radius: 3px;
   border: none;
-  background-color: #608bc5;
+  background-color: dodgerblue;
   color: #fff;
   font-family: inherit;
   font-size: 14px;
@@ -95,8 +91,6 @@ h3 {
     margin: 0 auto;
     width: 33%;
     display: inline-block;
-    background: none;
-    border: solid 3px #fff;
     font-size: 18px;
     font-weight: bold;
   }
@@ -125,7 +119,7 @@ h3 {
   input[type=email],
   select {
     width: 100%;
-    margin: 10px 0 20px 0;
+    margin-bottom: 20px;
     padding: 8px;
     display: block;
     border: solid 1px #ddd;
@@ -171,7 +165,6 @@ footer {
 
   .copyright {
     float: right;
-    color: #fdfdfd;
   }
 }
 
@@ -181,7 +174,7 @@ footer {
   text-align: left;
 
   .form {
-    max-width: 100%;
+    width: 100%;
     margin: 0px auto;
     padding: 20px;
     display: inline-block;
@@ -193,10 +186,11 @@ footer {
   }
 
   .chat-box {
-    max-width: 100%;
+    width: 100%;
     max-height: 400px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     padding: 5px;
+    border-radius: 3px;
     border: solid 1px #ddd;
     overflow-y: scroll;
     @extend .clearfix;
@@ -205,22 +199,18 @@ footer {
       margin-bottom: 5px;
       padding: 5px 10px;
       border-radius: 10px;
-      background-color: dodgerblue;
-      color: #fff;
+      background-color: #ddd;
+      color: #333;
       width: 67%;
       clear: both;
-      word-wrap:break-word;
+      word-wrap: break-word;
+      float: left;
 
       &[data-self=true] {
-        background-color: #ddd;
-        color: #333;
-        float:right;
+        background-color: dodgerblue;
+        color: #fff;
+        float: right;
       }
-    }
-
-    .message {
-      float: left;
-      background-color: #608bc5;
     }
 
     .user {
@@ -234,7 +224,7 @@ footer {
       clear: both;
 
       &[data-self=true]  {
-        color: #608bc5;
+        color: dodgerblue;
         float: right;
         display:block;
       }

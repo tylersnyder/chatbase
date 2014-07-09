@@ -3,7 +3,6 @@
   compile on your machine (http://sass-lang.com/install)
   or online at http://sassmeister.com/
 *******************************************************/
-
 *,
 *:before,
 *:after {
@@ -31,8 +30,6 @@ body {
   padding: 20px;
   margin: 0 auto;
   background-color: #eee;
-  background-image: url("https://s3.amazonaws.com/ooomf-com-files/tU3ptNgGSP6U2fE67Gvy_SYDNEY-162.jpg");
-  background-size: cover;
   font-family: "Proxima Nova", "proxima-nova", "Helvetica", "Arial", sans-serif;
   color: #444;
   text-align: center;
@@ -43,7 +40,7 @@ body.open {
 
 a {
   text-decoration: none;
-  color: #608bc5;
+  color: dodgerblue;
   transition: color 0.2s ease;
 }
 a:hover {
@@ -57,7 +54,6 @@ p {
 h1 {
   font-size: 48px;
   margin: 0;
-  color: #fdfdfd;
 }
 
 h2 {
@@ -66,7 +62,6 @@ h2 {
 
 h3 {
   margin: 10px 0 20px;
-  color: #fdfdfd;
 }
 
 .button {
@@ -74,7 +69,7 @@ h3 {
   padding: 10px 20px;
   border-radius: 3px;
   border: none;
-  background-color: #608bc5;
+  background-color: dodgerblue;
   color: #fff;
   font-family: inherit;
   font-size: 14px;
@@ -89,8 +84,6 @@ h3 {
   margin: 0 auto;
   width: 33%;
   display: inline-block;
-  background: none;
-  border: solid 3px #fff;
   font-size: 18px;
   font-weight: bold;
 }
@@ -114,7 +107,7 @@ h3 {
 .form input[type=email],
 .form select {
   width: 100%;
-  margin: 10px 0 20px 0;
+  margin-bottom: 20px;
   padding: 8px;
   display: block;
   border: solid 1px #ddd;
@@ -155,7 +148,6 @@ footer ul li {
 }
 footer .copyright {
   float: right;
-  color: #fdfdfd;
 }
 
 .chat {
@@ -164,7 +156,7 @@ footer .copyright {
   text-align: left;
 }
 .chat .form {
-  max-width: 100%;
+  width: 100%;
   margin: 0px auto;
   padding: 20px;
   display: inline-block;
@@ -175,10 +167,11 @@ footer .copyright {
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
 .chat .chat-box {
-  max-width: 100%;
+  width: 100%;
   max-height: 400px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   padding: 5px;
+  border-radius: 3px;
   border: solid 1px #ddd;
   overflow-y: scroll;
 }
@@ -186,20 +179,17 @@ footer .copyright {
   margin-bottom: 5px;
   padding: 5px 10px;
   border-radius: 10px;
-  background-color: dodgerblue;
-  color: #fff;
+  background-color: #ddd;
+  color: #333;
   width: 67%;
   clear: both;
   word-wrap: break-word;
+  float: left;
 }
 .chat .chat-box .message[data-self=true] {
-  background-color: #ddd;
-  color: #333;
+  background-color: dodgerblue;
+  color: #fff;
   float: right;
-}
-.chat .chat-box .message {
-  float: left;
-  background-color: #608bc5;
 }
 .chat .chat-box .user {
   display: block;
@@ -212,7 +202,7 @@ footer .copyright {
   clear: both;
 }
 .chat .chat-box .user[data-self=true] {
-  color: #608bc5;
+  color: dodgerblue;
   float: right;
   display: block;
 }
