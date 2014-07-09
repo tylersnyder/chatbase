@@ -79,7 +79,7 @@ var chat = function(user) {
   this.send = function() {
     var message = $('#chat-message').val();
 
-    if (preventInjection(message) == true) {
+
       messages.push({
         'date': d,
         'timestamp': t,
@@ -90,7 +90,7 @@ var chat = function(user) {
       window.setTimeout(function() {
         chat.form('reset');
       }, 500);
-    }
+    
   }
 
   this.bind = function(selector, data) {
