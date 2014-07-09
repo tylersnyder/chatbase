@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbase</title>
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+  <script src="js/modernizr.js"></script>
+</head>
+<body>
+  <h1>Chatbase</h1>
+  <h3>A lightweight chat client built with Firebase</h3>
+  <a class="button login" href="#">Sign in</a>
+  <div class="chat hide">
+    <a class="button" data-chat="open" href="#">Chat</a>
+    <form class="form clearfix hide" data-chat="form">
+      <div class="close" data-chat="close"></div>
+      <div class="chat-box"></div>
+      <label>
+        <span id="chat-message-error" class="error hide">required</span>
+        <input type="text" id="chat-message" name="chat-message" data-error="chat-message-error" placeholder="Type your message" required>
+      </label>
+      <button class="button" data-chat="send">Send</button>
+    </form>
+    <div class="loading loading-feedback hide">
+      <div class="absolute-center">
+        <div class="spinner"></div>
+        <span class="message">Sending...</span>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <ul>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+    </ul>
+    <span class="copyright">Copyright &copy; 2014 Gayler Corp</span>
+  </footer>
+
+  <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+  <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+  <script src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/h5Validate/0.8.4/jquery.h5validate.js'></script>
+  <script src='http://use.typekit.net/dxd7fnz.js'></script>
+  <script src="js/index.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/chat.js"></script>
+
+</body>
+</html>
