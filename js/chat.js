@@ -56,7 +56,7 @@ var chat = function(user) {
           message = message.replace(':emoji-end:', '"></div>');
 
           if (self == username) {
-            var name = '<span class="user">' + username + '</span>';
+            var name = '<span class="user" data-self="true">' + username + '</span>';
           } else {
             var name = '<span class="user">' + username + '</span>';
           }
