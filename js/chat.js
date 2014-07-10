@@ -3,9 +3,9 @@ var count = 0,
     date = new Date(),
     d = date.toDateString(),
     t = date.toLocaleTimeString(),
-    timestamp = new Date().getUTCMilliseconds();
+    timestamp = new Date().getUTCMilliseconds(),
+    messages = new Firebase(firebaseURL + '/chat/messages');
 
-var messages = new Firebase(firebaseURL + '/chat/messages');
 var chat = function(user) {
   count = 0;
 
