@@ -5,39 +5,41 @@
   <title>Chatbase</title>
   <meta name="robots" content="noindex">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/screen.css" media="screen" type="text/css" />
-  <script src="js/modernizr.js"></script>
+  <link rel="stylesheet" href="css/screen.css?v=1.0" media="screen" type="text/css" />
+  <script src='https://use.typekit.net/dxd7fnz.js'></script>
 </head>
 <body>
+
   <h1>Chatbase</h1>
   <h3>A lightweight chat client built with Firebase</h3>
   <a class="button login" href="#">Sign in</a>
   <div class="chat hide">
     <a class="button" data-chat="open" href="#">Chat</a>
-    <form class="form clearfix hide" data-chat="form">
+    <form class="form" data-chat="form">
       <div class="close" data-chat="close"></div>
       <div class="chat-box"></div>
       <div class="emoji-box">
-          <div class="emoji s_smile"></div>
-          <div class="emoji s_grinning"></div>
-          <div class="emoji s_smiley"></div>
-          <div class="emoji s_blush"></div>
-          <div class="emoji s_relaxed"></div>
-          <div class="emoji s_heart_eyes"></div>
-          <div class="emoji s_kissing_closed_eyes"></div>
-          <div class="emoji s_stuck_out_tongue_winking_eye"></div>
-          <div class="emoji s_flushed"></div>
-          <div class="emoji s_kissing"></div>
-          <div class="emoji s_triumph"></div>
-          <div class="emoji s_sob"></div>
-          <div class="emoji s_open_mouth"></div>
-          <div class="emoji s_grimacing"></div>
-          <div class="emoji s_sleeping"></div>
-          <div class="emoji s_scream"></div>
+        <ul class="emoji-picker">
+          <li class="emoji s_smile"></li>
+          <li class="emoji s_grinning"></li>
+          <li class="emoji s_smiley"></li>
+          <li class="emoji s_blush"></li>
+          <li class="emoji s_relaxed"></li>
+          <li class="emoji s_heart_eyes"></li>
+          <li class="emoji s_kissing_closed_eyes"></li>
+          <li class="emoji s_stuck_out_tongue_winking_eye"></li>
+          <li class="emoji s_flushed"></li>
+          <li class="emoji s_triumph"></li>
+          <li class="emoji s_sob"></li>
+          <li class="emoji s_open_mouth"></li>
+          <li class="emoji s_grimacing"></li>
+          <li class="emoji s_sleeping"></li>
+          <li class="emoji s_scream"></li>
+        </ul>
       </div>
       <div class="input-box">
-        <span id="chat-message-error" class="error hide">required</span>
-        <input type="text" id="chat-message" name="chat-message" data-error="chat-message-error" placeholder="Type your message" required>
+        <span id="chat-message-error" class="error hide"></span>
+        <input type="text" id="chat-message" name="chat-message" data-error-id="chat-message-error" data-error-message="required" placeholder="Type your message" required>
       </div>
       <button class="button" data-chat="send">
         <div class="loading hide">
@@ -58,14 +60,13 @@
     <span class="copyright">Copyright &copy; 2014 Gayler Corp</span>
   </footer>
 
-  <script src='//codepen.io/assets/libs/fullpage/jquery.js'></script>
-  <script src='//cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
-  <script src='//cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
-  <script src='//cdnjs.cloudflare.com/ajax/libs/h5Validate/0.8.4/jquery.h5validate.js'></script>
-  <script src='//use.typekit.net/dxd7fnz.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+  <script src='https://cdn.firebase.com/js/client/1.0.17/firebase.js'></script>
+  <script src='https://cdn.firebase.com/js/simple-login/1.6.1/firebase-simple-login.js'></script>
+  <script src='js/validate.js'></script>
   <script src="js/index.js"></script>
   <script src="js/auth.js"></script>
-  <script src="js/chat.js"></script>
+  <script src="js/chat.js?v1.0"></script>
 
 </body>
 </html>
