@@ -46,9 +46,7 @@ var chat = function(user) {
           count++;
 
           var timestamp =$(this).get(0).timestamp ,
-               text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
-                 return "&#" + c.charCodeAt() + ";";
-              }); + '</span>',
+               text = '<span class="text">' + escapeHtml($(this).get(0).message)+ '</span>',
               self = user.displayName;
 
           text = text.replace(':emoji-start:', '<div class="');
@@ -209,3 +207,23 @@ $('[data-chat=send]').click(function (e) {
     chat.send();
   }
 });
+
+var entityMap = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': '&quot;',
+    "'": '&#39;',
+    "/": '&#x2F;'
+  };
+
+  function escapeHtml(string) {
+	  if(/<[a-z][\s\S]*>/i.test(string)){
+			return  "<pre>"+String(string).replace(/[&<>"'\/]/g, function (s) {
+			  return entityMap[s];
+			}) +"</pre>";
+		}
+		else{
+			return string;
+		}
+  }
