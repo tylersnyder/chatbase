@@ -54,7 +54,7 @@
 				patternAttribute: 'pattern',
 
 				// Attribute which stores the ID of the error container element (without the hash).
-				errorAttribute: 'data-error',
+				errorAttribute: 'data-error-id',
 
 				// Events API
 				customEvents: {
@@ -63,7 +63,7 @@
 
 				// Setup KB event delegation.
 				kbSelectors: ':input:not(:button):not(:disabled):not(.novalidate)',
-				focusout: true,
+				focusout: false,
 				focusin: false,
 				change: true,
 				keyup: false,
@@ -74,10 +74,10 @@
 				click: true,
 
 				// What do we name the required .data variable?
-				requiredVar: 'h5-required',
+				requiredVar: 'required',
 
 				// What do we name the pattern .data variable?
-				patternVar: 'h5-pattern',
+				patternVar: 'pattern',
 				stripMarkup: true,
 
 				// Run submit related checks and prevent form submission if any fields are invalid?
@@ -109,8 +109,8 @@
 					$element.addClass(options.settings.activeClass);
 
 					if ($errorID.length) { // These ifs are technically not needed, but improve server-side performance
-						if ($element.attr('title')) {
-							$errorID.text($element.attr('title'));
+						if ($element.attr('data-error-message')) {
+							$errorID.text($element.attr('data-error-message'));
 						}
 						$errorID.removeClass('hide');
 					}
