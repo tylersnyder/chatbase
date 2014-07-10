@@ -128,11 +128,11 @@ var chat = function(user) {
 
       case 'sent':
         chat.spinner('show');
-        $('input').attr('disabled', true);
+        $('.chat .button').attr('disabled', true);
         window.setTimeout(function() {
           chat.spinner('hide');
           chat.form('reset');
-          $('input').removeAttr('disabled').focus();
+          $('.chat .button').removeAttr('disabled');
         }, 500);
         break;
 
