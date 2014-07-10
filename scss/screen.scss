@@ -32,7 +32,7 @@
 
 body {
   max-width: 480px;
-  padding: 20px;
+  padding: 20px 10px;
   margin: 0 auto;
   background-color: #eee;
   font-family: "Proxima Nova", "proxima-nova", "Helvetica", "Arial", sans-serif;
@@ -131,7 +131,7 @@ h3 {
   input[type=email],
   select {
     width: 100%;
-    margin-bottom: 10px;
+    margin: 0 auto 10px;
     padding: 8px;
     display: block;
     border: solid 1px #ddd;
@@ -255,12 +255,11 @@ footer {
     @extend .clearfix;
 
     .emoji-picker {
-      margin: 0 5px;
-      @extend .clearfix;
+      margin: 0 auto;
     }
 
     .emoji {
-      float: left;
+      display: inline-block;
 
       &:hover {
         cursor: pointer;

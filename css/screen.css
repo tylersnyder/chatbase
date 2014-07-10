@@ -4508,11 +4508,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* line 23, ../scss/screen.scss */
-.clearfix, .button.logout:not(.hide), .button[data-chat=send], footer, .chat .chat-box, .chat .emoji-box, .chat .emoji-box .emoji-picker, .chat .input-box {
+.clearfix, .button.logout:not(.hide), .button[data-chat=send], footer, .chat .chat-box, .chat .emoji-box, .chat .input-box {
   float: left;
 }
 /* line 27, ../scss/screen.scss */
-.clearfix:before, .button.logout:not(.hide):before, .button[data-chat=send]:before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .chat .emoji-box .emoji-picker:before, .chat .input-box:before, .clearfix:after, .button.logout:not(.hide):after, .button[data-chat=send]:after, footer:after, .chat .chat-box:after, .chat .emoji-box:after, .chat .emoji-box .emoji-picker:after, .chat .input-box:after {
+.clearfix:before, .button.logout:not(.hide):before, .button[data-chat=send]:before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .chat .input-box:before, .clearfix:after, .button.logout:not(.hide):after, .button[data-chat=send]:after, footer:after, .chat .chat-box:after, .chat .emoji-box:after, .chat .input-box:after {
   display: block;
   clear: both;
 }
@@ -4520,7 +4520,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* line 33, ../scss/screen.scss */
 body {
   max-width: 480px;
-  padding: 20px;
+  padding: 20px 10px;
   margin: 0 auto;
   background-color: #eee;
   font-family: "Proxima Nova", "proxima-nova", "Helvetica", "Arial", sans-serif;
@@ -4626,7 +4626,7 @@ h3 {
 .form input[type=email],
 .form select {
   width: 100%;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
   padding: 8px;
   display: block;
   border: solid 1px #ddd;
@@ -4706,17 +4706,16 @@ footer .copyright {
   color: #333;
   width: 67%;
   clear: both;
-  line-height: 1.2;
   word-wrap: break-word;
   float: left;
 }
-/* line 215, ../scss/screen.scss */
+/* line 214, ../scss/screen.scss */
 .chat .chat-box .message[data-self=true] {
   background-color: dodgerblue;
   color: #fff;
   float: right;
 }
-/* line 222, ../scss/screen.scss */
+/* line 221, ../scss/screen.scss */
 .chat .chat-box .user {
   display: block;
   padding: 5px;
@@ -4727,49 +4726,49 @@ footer .copyright {
   font-size: 13px;
   clear: both;
 }
-/* line 232, ../scss/screen.scss */
+/* line 231, ../scss/screen.scss */
 .chat .chat-box .user[data-self=true] {
   color: dodgerblue;
   float: right;
   display: block;
 }
-/* line 239, ../scss/screen.scss */
+/* line 238, ../scss/screen.scss */
 .chat .chat-box [data-timestamp]:hover:after {
   content: attr(title);
   padding-left: 5px;
   display: inline-block;
   font-size: 11px;
 }
-/* line 247, ../scss/screen.scss */
+/* line 246, ../scss/screen.scss */
 .chat .text {
   word-wrap: break-word;
   max-width: 250px;
 }
-/* line 252, ../scss/screen.scss */
+/* line 251, ../scss/screen.scss */
 .chat .emoji-box {
   width: 100%;
   margin-bottom: 10px;
   text-align: center;
 }
-/* line 258, ../scss/screen.scss */
+/* line 257, ../scss/screen.scss */
 .chat .emoji-box .emoji-picker {
-  margin: 0 5px;
+  margin: 0 auto;
 }
-/* line 263, ../scss/screen.scss */
+/* line 261, ../scss/screen.scss */
 .chat .emoji-box .emoji {
-  float: left;
+  display: inline-block;
 }
-/* line 266, ../scss/screen.scss */
+/* line 264, ../scss/screen.scss */
 .chat .emoji-box .emoji:hover {
   cursor: pointer;
 }
-/* line 272, ../scss/screen.scss */
+/* line 270, ../scss/screen.scss */
 .chat .input-box {
   position: relative;
   width: 100%;
 }
 
-/* line 279, ../scss/screen.scss */
+/* line 277, ../scss/screen.scss */
 pre {
   padding: 5px 10px;
   border-radius: 6px;
@@ -4780,7 +4779,7 @@ pre {
   color: #444;
 }
 
-/* line 289, ../scss/screen.scss */
+/* line 287, ../scss/screen.scss */
 .loading {
   width: 100%;
   height: 100%;
@@ -4790,7 +4789,7 @@ pre {
   background-color: #fff;
   text-align: center;
 }
-/* line 298, ../scss/screen.scss */
+/* line 296, ../scss/screen.scss */
 .loading .message {
   position: relative;
   top: 20px;
@@ -4798,7 +4797,7 @@ pre {
   max-width: 250px;
 }
 
-/* line 306, ../scss/screen.scss */
+/* line 304, ../scss/screen.scss */
 .spinner {
   height: 30px;
   width: 30px;
@@ -4816,7 +4815,7 @@ pre {
   transition: all 0.1s ease-in;
 }
 
-/* line 323, ../scss/screen.scss */
+/* line 321, ../scss/screen.scss */
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -4827,13 +4826,13 @@ pre {
 }
 
 @keyframes spinner {
-  /* line 333, ../scss/screen.scss */
+  /* line 331, ../scss/screen.scss */
   0% {
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 338, ../scss/screen.scss */
+  /* line 336, ../scss/screen.scss */
   100% {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -4841,24 +4840,24 @@ pre {
 }
 
 @-webkit-keyframes spinner {
-  /* line 344, ../scss/screen.scss */
+  /* line 342, ../scss/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 348, ../scss/screen.scss */
+  /* line 346, ../scss/screen.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @-moz-keyframes spinner {
-  /* line 353, ../scss/screen.scss */
+  /* line 351, ../scss/screen.scss */
   0% {
     -moz-transform: rotate(0deg);
   }
 
-  /* line 357, ../scss/screen.scss */
+  /* line 355, ../scss/screen.scss */
   100% {
     -moz-transform: rotate(360deg);
   }
