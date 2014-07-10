@@ -4508,11 +4508,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* line 23, ../scss/screen.scss */
-.clearfix, .button.logout:not(.hide), footer, .chat .chat-box, .chat .emoji-box, .chat .input-box {
+.clearfix, .button.logout:not(.hide), .button[data-chat=send], footer, .chat .chat-box, .chat .emoji-box, .chat .input-box {
   float: left;
 }
 /* line 27, ../scss/screen.scss */
-.clearfix:before, .button.logout:not(.hide):before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .chat .input-box:before, .clearfix:after, .button.logout:not(.hide):after, footer:after, .chat .chat-box:after, .chat .emoji-box:after, .chat .input-box:after {
+.clearfix:before, .button.logout:not(.hide):before, .button[data-chat=send]:before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .chat .input-box:before, .clearfix:after, .button.logout:not(.hide):after, .button[data-chat=send]:after, footer:after, .chat .chat-box:after, .chat .emoji-box:after, .chat .input-box:after {
   display: block;
   clear: both;
 }
@@ -4604,79 +4604,8 @@ h3 {
   font-weight: bold;
 }
 
-/* line 113, ../scss/screen.scss */
+/* line 114, ../scss/screen.scss */
 .form {
-  margin: 0;
-}
-/* line 116, ../scss/screen.scss */
-.form label {
-  display: block;
-}
-/* line 122, ../scss/screen.scss */
-.form input[type=text],
-.form input[type=email],
-.form select {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 8px;
-  display: block;
-  border: solid 1px #ddd;
-  border-radius: 3px;
-  background-color: #f5f5f5;
-  box-shadow: 1px 1px 1px #ddd inset;
-  font-family: inherit;
-  font-size: 16px;
-  color: #666;
-}
-/* line 135, ../scss/screen.scss */
-.form input[type=text].error,
-.form input[type=email].error,
-.form select.error {
-  box-shadow: 1px 1px 1px pink inset;
-  border-color: tomato;
-}
-/* line 141, ../scss/screen.scss */
-.form .error {
-  color: tomato;
-  float: right;
-}
-/* line 145, ../scss/screen.scss */
-.form .error:before {
-  content: '*';
-  padding-right: 3px;
-}
-
-/* line 152, ../scss/screen.scss */
-footer {
-  width: 100%;
-  padding: 20px 0;
-  font-size: 12px;
-}
-/* line 158, ../scss/screen.scss */
-footer ul {
-  margin: 0;
-  padding: 0;
-  float: left;
-}
-/* line 164, ../scss/screen.scss */
-footer ul li {
-  padding-right: 10px;
-  display: inline-block;
-}
-/* line 169, ../scss/screen.scss */
-footer .copyright {
-  float: right;
-}
-
-/* line 174, ../scss/screen.scss */
-.chat {
-  position: relative;
-  margin: 0 auto;
-  max-width: 100%;
-  text-align: left;
-}
-/* line 180, ../scss/screen.scss */
-.chat .form {
   position: relative;
   width: 100%;
   margin: 0px auto;
@@ -4688,7 +4617,76 @@ footer .copyright {
   border-radius: 3px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
-/* line 193, ../scss/screen.scss */
+/* line 126, ../scss/screen.scss */
+.form label {
+  display: block;
+}
+/* line 132, ../scss/screen.scss */
+.form input[type=text],
+.form input[type=email],
+.form select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  display: block;
+  border: solid 1px #ddd;
+  border-radius: 3px;
+  background-color: #f5f5f5;
+  box-shadow: 1px 1px 1px #ddd inset;
+  font-family: inherit;
+  font-size: 16px;
+  color: #666;
+}
+/* line 145, ../scss/screen.scss */
+.form input[type=text].error,
+.form input[type=email].error,
+.form select.error {
+  box-shadow: 1px 1px 1px pink inset;
+  border-color: tomato;
+}
+/* line 151, ../scss/screen.scss */
+.form span.error {
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  color: tomato;
+}
+/* line 157, ../scss/screen.scss */
+.form span.error:before {
+  content: '*';
+  padding-right: 3px;
+}
+
+/* line 164, ../scss/screen.scss */
+footer {
+  width: 100%;
+  padding: 20px 0;
+  font-size: 12px;
+}
+/* line 170, ../scss/screen.scss */
+footer ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+/* line 176, ../scss/screen.scss */
+footer ul li {
+  padding-right: 10px;
+  display: inline-block;
+}
+/* line 181, ../scss/screen.scss */
+footer .copyright {
+  float: right;
+}
+
+/* line 186, ../scss/screen.scss */
+.chat {
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+  text-align: left;
+}
+/* line 192, ../scss/screen.scss */
 .chat .chat-box {
   position: relative;
   width: 100%;
@@ -4699,7 +4697,7 @@ footer .copyright {
   border: solid 1px #ddd;
   overflow-y: scroll;
 }
-/* line 204, ../scss/screen.scss */
+/* line 203, ../scss/screen.scss */
 .chat .chat-box .message {
   margin-bottom: 5px;
   padding: 5px 10px;
@@ -4711,13 +4709,13 @@ footer .copyright {
   word-wrap: break-word;
   float: left;
 }
-/* line 215, ../scss/screen.scss */
+/* line 214, ../scss/screen.scss */
 .chat .chat-box .message[data-self=true] {
   background-color: dodgerblue;
   color: #fff;
   float: right;
 }
-/* line 222, ../scss/screen.scss */
+/* line 221, ../scss/screen.scss */
 .chat .chat-box .user {
   display: block;
   padding: 5px;
@@ -4728,40 +4726,41 @@ footer .copyright {
   font-size: 13px;
   clear: both;
 }
-/* line 232, ../scss/screen.scss */
+/* line 231, ../scss/screen.scss */
 .chat .chat-box .user[data-self=true] {
   color: dodgerblue;
   float: right;
   display: block;
 }
-/* line 239, ../scss/screen.scss */
+/* line 238, ../scss/screen.scss */
 .chat .chat-box [data-timestamp]:hover:after {
   content: attr(title);
   padding-left: 5px;
   display: inline-block;
   font-size: 11px;
 }
-/* line 247, ../scss/screen.scss */
+/* line 246, ../scss/screen.scss */
 .chat .text {
   word-wrap: break-word;
   max-width: 250px;
 }
-/* line 252, ../scss/screen.scss */
+/* line 251, ../scss/screen.scss */
 .chat .emoji-box {
   width: 100%;
   margin-bottom: 10px;
   text-align: center;
 }
-/* line 258, ../scss/screen.scss */
+/* line 257, ../scss/screen.scss */
 .chat .emoji-box .emoji {
   float: left;
 }
-/* line 261, ../scss/screen.scss */
+/* line 260, ../scss/screen.scss */
 .chat .emoji-box .emoji:hover {
   cursor: pointer;
 }
-/* line 267, ../scss/screen.scss */
+/* line 266, ../scss/screen.scss */
 .chat .input-box {
+  position: relative;
   width: 100%;
 }
 

@@ -20,6 +20,7 @@ var chat = function(user) {
   }
 
   this.open = function() {
+    $('#chat-message').focus();
     chat.scroll('to-bottom');
     chat.form('show');
   }
@@ -58,7 +59,7 @@ var chat = function(user) {
           if (self == username) {
             var name = '<span class="user" data-self="true">' + username + '</span>';
           } else {
-            var name = '<span class="user">' + username + '</span>';
+            var name = '<span class="user"">' + username + '</span>';
           }
 
           if (count != 0 && username == prev) {
