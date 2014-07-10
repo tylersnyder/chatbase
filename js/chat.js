@@ -16,7 +16,7 @@ var chat = function(user) {
 
     window.setInterval(function() {
       chat.get();
-    }, 3000);
+    }, 1000);
   }
 
   this.open = function() {
@@ -29,16 +29,9 @@ var chat = function(user) {
     chat.form('hide');
   }
 
-
   this.get = function() {
     messages.on('value', function(snapshot) {
-      //console.log(snapshot.val());
-      //console.log('length: '  + Object.size(snapshot.val()));
-	    //console.log('count: ' + count);
-	    //console.log(JSON.stringify(snapshot.val()));
-
   	  if (count == 0 | Object.size(snapshot.val()) > count) {
-    	  //console.log('new message');
     	  chatbox.empty();
     		count = 0;
         var prev = '';
@@ -83,8 +76,6 @@ var chat = function(user) {
   }
 
   this.send = function() {
-    chat.spinner('show');
-    $('input').attr('disabled', true);
     var message = $('#chat-message').val();
 
     messages.push({
@@ -94,11 +85,7 @@ var chat = function(user) {
       'message': message
     })
 
-    window.setTimeout(function() {
-      chat.spinner('hide');
-      chat.form('reset');
-      $('input').removeAttr('disabled').focus();
-    }, 500);
+    chat.spinner('sent');
   }
 
   this.bind = function(selector, data) {
@@ -144,14 +131,30 @@ var chat = function(user) {
   }
 
   this.spinner = function(action, text) {
-    if (action == 'show') {
-      chat.scroll('disable');
+    switch (action) {
+      case 'show':
+        chat.scroll('disable');
+        $('.loading .message').text(text);
+        $('.loading').removeClass('hide');
+        break;
 
-      $('.loading .message').text(text);
-      $('.loading').removeClass('hide');
-    } else if (action == 'hide') {
-      chat.scroll('enable');
-      $('.loading').addClass('hide');
+      case 'hide':
+        chat.scroll('enable');
+        $('.loading').addClass('hide');
+        break;
+
+      case 'sent':
+        chat.spinner('show');
+        $('input').attr('disabled', true);
+        window.setTimeout(function() {
+          chat.spinner('hide');
+          chat.form('reset');
+          $('input').removeAttr('disabled').focus();
+        }, 500);
+        break;
+
+      default:
+        return;
     }
   }
 
@@ -182,31 +185,23 @@ var chat = function(user) {
 
   function insertEmoji(emoji) {
     var classes = $(emoji).attr('class');
-    chat.spinner('show');
-    $('input').attr('disabled', true);
-
-    window.setTimeout(function() {
-      chat.spinner('hide');
-      chat.form('reset');
-      $('input').removeAttr('disabled').focus();
-    }, 500);
-
     messages.push({
       'date': d,
       'timestamp': t,
       'user': user.displayName,
       'message': ':emoji-start:'+ classes + ':emoji-end:'
     })
+
+    chat.spinner('sent');
   }
 
-  $('.emoji-box .emoji').on('click', function() {
+  $('.emoji-box .emoji').click(function() {
     insertEmoji(this);
   })
 }
 
 $('[data-chat=send]').click(function (e) {
   e.preventDefault();
-
   if ($('.chat form').h5Validate('allValid') === true) {
     chat.send();
   }
