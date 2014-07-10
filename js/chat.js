@@ -40,11 +40,11 @@ var chat = function(user) {
           count++;
 
           var timestamp = $(this).get(0).timestamp,
+              username = $(this).get(0).user,
+              self = user.displayName,
               message = $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
                  return "&#" + c.charCodeAt() + ";";
-              }),
-              username = $(this).get(0).user,
-              self = user.displayName;
+              });
 
           message = message.replace(':emoji-start:', '<div class="');
           message = message.replace(':emoji-end:', '"></div>');
@@ -80,14 +80,6 @@ var chat = function(user) {
     chat.spinner('sent');
   }
 
-  this.bind = function(selector, data) {
-    if ($(selector).is(':input')) {
-      $(selector).val(data);
-    } else {
-      $(selector).text(data);
-    }
-  }
-
   this.form = function(action) {
     switch (action) {
       case 'show':
@@ -107,8 +99,7 @@ var chat = function(user) {
         $('.chat .form :input').val('');
         break;
 
-      default:
-        return;
+      default: return;
     }
   }
 
@@ -145,8 +136,7 @@ var chat = function(user) {
         }, 500);
         break;
 
-      default:
-        return;
+      default: return;
     }
   }
 
@@ -166,8 +156,15 @@ var chat = function(user) {
         }, 1000);
         break;
 
-      default:
-        return;
+      default: return;
+    }
+  }
+
+  this.bind = function(selector, data) {
+    if ($(selector).is(':input')) {
+      $(selector).val(data);
+    } else {
+      $(selector).text(data);
     }
   }
 
@@ -190,11 +187,11 @@ var chat = function(user) {
   $('.emoji-box .emoji').click(function() {
     insertEmoji(this);
   })
-}
 
-$('[data-chat=send]').click(function (e) {
-  e.preventDefault();
-  if ($('.chat form').h5Validate('allValid') === true) {
-    chat.send();
-  }
-});
+  $('[data-chat=send]').click(function (e) {
+    e.preventDefault();
+    if ($('.chat form').h5Validate('allValid') === true) {
+      chat.send();
+    }
+  });
+}

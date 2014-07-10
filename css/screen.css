@@ -4706,16 +4706,17 @@ footer .copyright {
   color: #333;
   width: 67%;
   clear: both;
+  line-height: 1.5;
   word-wrap: break-word;
   float: left;
 }
-/* line 214, ../scss/screen.scss */
+/* line 215, ../scss/screen.scss */
 .chat .chat-box .message[data-self=true] {
   background-color: dodgerblue;
   color: #fff;
   float: right;
 }
-/* line 221, ../scss/screen.scss */
+/* line 222, ../scss/screen.scss */
 .chat .chat-box .user {
   display: block;
   padding: 5px;
@@ -4726,49 +4727,49 @@ footer .copyright {
   font-size: 13px;
   clear: both;
 }
-/* line 231, ../scss/screen.scss */
+/* line 232, ../scss/screen.scss */
 .chat .chat-box .user[data-self=true] {
   color: dodgerblue;
   float: right;
   display: block;
 }
-/* line 238, ../scss/screen.scss */
+/* line 239, ../scss/screen.scss */
 .chat .chat-box [data-timestamp]:hover:after {
   content: attr(title);
   padding-left: 5px;
   display: inline-block;
   font-size: 11px;
 }
-/* line 246, ../scss/screen.scss */
+/* line 247, ../scss/screen.scss */
 .chat .text {
   word-wrap: break-word;
   max-width: 250px;
 }
-/* line 251, ../scss/screen.scss */
+/* line 252, ../scss/screen.scss */
 .chat .emoji-box {
   width: 100%;
   margin-bottom: 10px;
   text-align: center;
 }
-/* line 257, ../scss/screen.scss */
+/* line 258, ../scss/screen.scss */
 .chat .emoji-box .emoji-picker {
   margin: 0 5px;
 }
-/* line 262, ../scss/screen.scss */
+/* line 263, ../scss/screen.scss */
 .chat .emoji-box .emoji {
   float: left;
 }
-/* line 265, ../scss/screen.scss */
+/* line 266, ../scss/screen.scss */
 .chat .emoji-box .emoji:hover {
   cursor: pointer;
 }
-/* line 271, ../scss/screen.scss */
+/* line 272, ../scss/screen.scss */
 .chat .input-box {
   position: relative;
   width: 100%;
 }
 
-/* line 278, ../scss/screen.scss */
+/* line 279, ../scss/screen.scss */
 pre {
   padding: 5px 10px;
   border-radius: 6px;
@@ -4779,7 +4780,7 @@ pre {
   color: #444;
 }
 
-/* line 288, ../scss/screen.scss */
+/* line 289, ../scss/screen.scss */
 .loading {
   width: 100%;
   height: 100%;
@@ -4789,7 +4790,7 @@ pre {
   background-color: #fff;
   text-align: center;
 }
-/* line 297, ../scss/screen.scss */
+/* line 298, ../scss/screen.scss */
 .loading .message {
   position: relative;
   top: 20px;
@@ -4797,7 +4798,7 @@ pre {
   max-width: 250px;
 }
 
-/* line 305, ../scss/screen.scss */
+/* line 306, ../scss/screen.scss */
 .spinner {
   height: 30px;
   width: 30px;
@@ -4815,7 +4816,7 @@ pre {
   transition: all 0.1s ease-in;
 }
 
-/* line 322, ../scss/screen.scss */
+/* line 323, ../scss/screen.scss */
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -4826,13 +4827,13 @@ pre {
 }
 
 @keyframes spinner {
-  /* line 332, ../scss/screen.scss */
+  /* line 333, ../scss/screen.scss */
   0% {
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 337, ../scss/screen.scss */
+  /* line 338, ../scss/screen.scss */
   100% {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -4840,24 +4841,24 @@ pre {
 }
 
 @-webkit-keyframes spinner {
-  /* line 343, ../scss/screen.scss */
+  /* line 344, ../scss/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 347, ../scss/screen.scss */
+  /* line 348, ../scss/screen.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @-moz-keyframes spinner {
-  /* line 352, ../scss/screen.scss */
+  /* line 353, ../scss/screen.scss */
   0% {
     -moz-transform: rotate(0deg);
   }
 
-  /* line 356, ../scss/screen.scss */
+  /* line 357, ../scss/screen.scss */
   100% {
     -moz-transform: rotate(360deg);
   }
