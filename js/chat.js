@@ -51,10 +51,8 @@ var chat = function(user) {
               }); + '</span>',
               self = user.displayName;
 
-          console.log(text);
           text = text.replace(':emoji-start:', '<div class="');
           text = text.replace(':emoji-end:', '"></div>');
-          console.log(text);
 
           if (self == $(this).get(0).user) {
             var name = '<span class="user" data-self="true">' + $(this).get(0).user + '</span>';
