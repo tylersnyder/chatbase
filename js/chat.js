@@ -49,21 +49,13 @@ var chat = function(user) {
           message = message.replace(':emoji-start:', '<div class="');
           message = message.replace(':emoji-end:', '"></div>');
 
-          if (self == username) {
-            var name = '<span class="user" data-self="true">' + username + '</span>';
-          } else {
-            var name = '<span class="user"">' + username + '</span>';
-          }
+          var name = (self == username) ? '<span class="user" data-self="true">' + username + '</span>' : '<span class="user">' + username + '</span>';
 
           if (count != 0 && username == prev) {
             name = '';
           }
 
-          if (self == username) {
-            chatbox.append(name+'<div class="message" data-self="true" data-timestamp title="' + timestamp + '">' + message + '</div>' );
-          } else {
-            chatbox.append(name+'<div class="message" data-timestamp title="' + timestamp + '">' + message + '</div>');
-          }
+          (self == username) ? chatbox.append(name + '<div class="message" data-self="true" data-timestamp title="' + timestamp + '">' + message + '</div>' ) : chatbox.append(name + '<div class="message" data-timestamp title="' + timestamp + '">' + message + '</div>');
 
           prev = username;
         })
