@@ -85,20 +85,18 @@ var chat = function(user) {
     $('input').attr('disabled', true);
     var message = $('#chat-message').val();
 
-    if (preventInjection(message) == true) {
-      messages.push({
-        'date': d,
-        'timestamp': t,
-        'user': user.displayName,
-        'message': message
-      })
+    messages.push({
+      'date': d,
+      'timestamp': t,
+      'user': user.displayName,
+      'message': message
+    })
 
-      window.setTimeout(function() {
-        chat.spinner('hide');
-        chat.form('reset');
-        $('input').removeAttr('disabled').focus();
-      }, 500);
-    }
+    window.setTimeout(function() {
+      chat.spinner('hide');
+      chat.form('reset');
+      $('input').removeAttr('disabled').focus();
+    }, 500);
   }
 
   this.bind = function(selector, data) {
@@ -211,15 +209,3 @@ $('[data-chat=send]').click(function (e) {
     chat.send();
   }
 });
-
-function preventInjection(message) {
-  var $trimmed = message.trim().toLowerCase();
-
-  if ($trimmed.indexOf('<script') > -1 || $trimmed.indexOf('script>') > -1) {
-    return false;
-  } else if ($trimmed.indexOf('type=') > -1 && $trimmed.indexOf('text/javascript') > -1) {
-    return false;
-  } else {
-    return true;
-  }
-};
