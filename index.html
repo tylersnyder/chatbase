@@ -35,18 +35,20 @@
           <div class="emoji s_sleeping"></div>
           <div class="emoji s_scream"></div>
       </div>
-      <label>
+      <div class="input-box">
         <span id="chat-message-error" class="error hide">required</span>
         <input type="text" id="chat-message" name="chat-message" data-error="chat-message-error" placeholder="Type your message" required>
-      </label>
-      <button class="button" data-chat="send">Send</button>
-    </form>
-    <div class="loading loading-feedback hide">
-      <div class="absolute-center">
-        <div class="spinner"></div>
-        <span class="message">Sending...</span>
       </div>
-    </div>
+      <button class="button" data-chat="send">
+        <div class="loading hide">
+          <div class="absolute-center">
+            <div class="spinner"></div>
+            <span class="message"></span>
+          </div>
+        </div>
+        Send
+      </button>
+    </form>
   </div>
   <footer>
     <ul>

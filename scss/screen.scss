@@ -71,6 +71,7 @@ h3 {
 }
 
 .button {
+  position: relative;
   margin: 0;
   padding: 10px 20px;
   border-radius: 3px;
@@ -149,6 +150,7 @@ h3 {
 }
 
 footer {
+  width: 100%;
   padding: 20px 0;
   font-size: 12px;
   @extend .clearfix;
@@ -170,11 +172,13 @@ footer {
 }
 
 .chat {
+  position: relative;
   margin: 0 auto;
   max-width: 100%;
   text-align: left;
 
   .form {
+    position: relative;
     width: 100%;
     margin: 0px auto;
     padding: 20px;
@@ -246,12 +250,23 @@ footer {
   }
 
   .emoji-box {
+    width: 100%;
     margin-bottom: 10px;
+    text-align: center;
     @extend .clearfix;
 
     .emoji {
       float: left;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
+  }
+
+  .input-box {
+    width: 100%;
+    @extend .clearfix;
   }
 }
 
@@ -273,8 +288,8 @@ footer {
 }
 
 .spinner {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   margin: 0 auto;
   border-radius: 100%;
   border: 6px solid transparent;

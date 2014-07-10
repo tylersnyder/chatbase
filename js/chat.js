@@ -81,6 +81,8 @@ var chat = function(user) {
   }
 
   this.send = function() {
+    chat.spinner('show');
+    $('input').attr('disabled', true);
     var message = $('#chat-message').val();
 
     if (preventInjection(message) == true) {
@@ -92,7 +94,9 @@ var chat = function(user) {
       })
 
       window.setTimeout(function() {
+        chat.spinner('hide');
         chat.form('reset');
+        $('input').removeAttr('disabled').focus();
       }, 500);
     }
   }
@@ -143,8 +147,8 @@ var chat = function(user) {
     if (action == 'show') {
       chat.scroll('disable');
 
-      $('.loading-feedback .message').text(text);
-      $('.loading-feedback').removeClass('hide');
+      $('.loading .message').text(text);
+      $('.loading').removeClass('hide');
     } else if (action == 'hide') {
       chat.scroll('enable');
       $('.loading').addClass('hide');
@@ -178,6 +182,14 @@ var chat = function(user) {
 
   function insertEmoji(emoji) {
     var classes = $(emoji).attr('class');
+    chat.spinner('show');
+    $('input').attr('disabled', true);
+
+    window.setTimeout(function() {
+      chat.spinner('hide');
+      chat.form('reset');
+      $('input').removeAttr('disabled').focus();
+    }, 500);
 
     messages.push({
       'date': d,

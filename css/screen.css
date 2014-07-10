@@ -4508,11 +4508,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* line 23, ../scss/screen.scss */
-.clearfix, .button.logout:not(.hide), footer, .chat .chat-box, .chat .emoji-box {
+.clearfix, .button.logout:not(.hide), footer, .chat .chat-box, .chat .emoji-box, .chat .input-box {
   float: left;
 }
 /* line 27, ../scss/screen.scss */
-.clearfix:before, .button.logout:not(.hide):before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .clearfix:after, .button.logout:not(.hide):after, footer:after, .chat .chat-box:after, .chat .emoji-box:after {
+.clearfix:before, .button.logout:not(.hide):before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .chat .input-box:before, .clearfix:after, .button.logout:not(.hide):after, footer:after, .chat .chat-box:after, .chat .emoji-box:after, .chat .input-box:after {
   display: block;
   clear: both;
 }
@@ -4566,6 +4566,7 @@ h3 {
 
 /* line 73, ../scss/screen.scss */
 .button {
+  position: relative;
   margin: 0;
   padding: 10px 20px;
   border-radius: 3px;
@@ -4575,15 +4576,15 @@ h3 {
   font-family: inherit;
   font-size: 14px;
 }
-/* line 83, ../scss/screen.scss */
+/* line 84, ../scss/screen.scss */
 .button.default {
   background-color: #bbb;
 }
-/* line 87, ../scss/screen.scss */
+/* line 88, ../scss/screen.scss */
 .button:hover {
   color: #fff;
 }
-/* line 91, ../scss/screen.scss */
+/* line 92, ../scss/screen.scss */
 .button.login:not(.hide) {
   margin: 0 auto;
   width: 33%;
@@ -4591,11 +4592,11 @@ h3 {
   font-size: 18px;
   font-weight: bold;
 }
-/* line 99, ../scss/screen.scss */
+/* line 100, ../scss/screen.scss */
 .button.logout:not(.hide) {
   margin: 20px auto 0;
 }
-/* line 104, ../scss/screen.scss */
+/* line 105, ../scss/screen.scss */
 .button[data-chat=send] {
   width: 100%;
   display: block;
@@ -4603,15 +4604,15 @@ h3 {
   font-weight: bold;
 }
 
-/* line 112, ../scss/screen.scss */
+/* line 113, ../scss/screen.scss */
 .form {
   margin: 0;
 }
-/* line 115, ../scss/screen.scss */
+/* line 116, ../scss/screen.scss */
 .form label {
   display: block;
 }
-/* line 121, ../scss/screen.scss */
+/* line 122, ../scss/screen.scss */
 .form input[type=text],
 .form input[type=email],
 .form select {
@@ -4627,53 +4628,56 @@ h3 {
   font-size: 16px;
   color: #666;
 }
-/* line 134, ../scss/screen.scss */
+/* line 135, ../scss/screen.scss */
 .form input[type=text].error,
 .form input[type=email].error,
 .form select.error {
   box-shadow: 1px 1px 1px pink inset;
   border-color: tomato;
 }
-/* line 140, ../scss/screen.scss */
+/* line 141, ../scss/screen.scss */
 .form .error {
   color: tomato;
   float: right;
 }
-/* line 144, ../scss/screen.scss */
+/* line 145, ../scss/screen.scss */
 .form .error:before {
   content: '*';
   padding-right: 3px;
 }
 
-/* line 151, ../scss/screen.scss */
+/* line 152, ../scss/screen.scss */
 footer {
+  width: 100%;
   padding: 20px 0;
   font-size: 12px;
 }
-/* line 156, ../scss/screen.scss */
+/* line 158, ../scss/screen.scss */
 footer ul {
   margin: 0;
   padding: 0;
   float: left;
 }
-/* line 162, ../scss/screen.scss */
+/* line 164, ../scss/screen.scss */
 footer ul li {
   padding-right: 10px;
   display: inline-block;
 }
-/* line 167, ../scss/screen.scss */
+/* line 169, ../scss/screen.scss */
 footer .copyright {
   float: right;
 }
 
-/* line 172, ../scss/screen.scss */
+/* line 174, ../scss/screen.scss */
 .chat {
+  position: relative;
   margin: 0 auto;
   max-width: 100%;
   text-align: left;
 }
-/* line 177, ../scss/screen.scss */
+/* line 180, ../scss/screen.scss */
 .chat .form {
+  position: relative;
   width: 100%;
   margin: 0px auto;
   padding: 20px;
@@ -4684,7 +4688,7 @@ footer .copyright {
   border-radius: 3px;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.1);
 }
-/* line 189, ../scss/screen.scss */
+/* line 193, ../scss/screen.scss */
 .chat .chat-box {
   position: relative;
   width: 100%;
@@ -4695,7 +4699,7 @@ footer .copyright {
   border: solid 1px #ddd;
   overflow-y: scroll;
 }
-/* line 200, ../scss/screen.scss */
+/* line 204, ../scss/screen.scss */
 .chat .chat-box .message {
   margin-bottom: 5px;
   padding: 5px 10px;
@@ -4707,13 +4711,13 @@ footer .copyright {
   word-wrap: break-word;
   float: left;
 }
-/* line 211, ../scss/screen.scss */
+/* line 215, ../scss/screen.scss */
 .chat .chat-box .message[data-self=true] {
   background-color: dodgerblue;
   color: #fff;
   float: right;
 }
-/* line 218, ../scss/screen.scss */
+/* line 222, ../scss/screen.scss */
 .chat .chat-box .user {
   display: block;
   padding: 5px;
@@ -4724,34 +4728,44 @@ footer .copyright {
   font-size: 13px;
   clear: both;
 }
-/* line 228, ../scss/screen.scss */
+/* line 232, ../scss/screen.scss */
 .chat .chat-box .user[data-self=true] {
   color: dodgerblue;
   float: right;
   display: block;
 }
-/* line 235, ../scss/screen.scss */
+/* line 239, ../scss/screen.scss */
 .chat .chat-box [data-timestamp]:hover:after {
   content: attr(title);
   padding-left: 5px;
   display: inline-block;
   font-size: 11px;
 }
-/* line 243, ../scss/screen.scss */
+/* line 247, ../scss/screen.scss */
 .chat .text {
   word-wrap: break-word;
   max-width: 250px;
 }
-/* line 248, ../scss/screen.scss */
-.chat .emoji-box {
-  margin-bottom: 10px;
-}
 /* line 252, ../scss/screen.scss */
+.chat .emoji-box {
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+/* line 258, ../scss/screen.scss */
 .chat .emoji-box .emoji {
   float: left;
 }
+/* line 261, ../scss/screen.scss */
+.chat .emoji-box .emoji:hover {
+  cursor: pointer;
+}
+/* line 267, ../scss/screen.scss */
+.chat .input-box {
+  width: 100%;
+}
 
-/* line 258, ../scss/screen.scss */
+/* line 273, ../scss/screen.scss */
 .loading {
   width: 100%;
   height: 100%;
@@ -4761,7 +4775,7 @@ footer .copyright {
   background-color: #fff;
   text-align: center;
 }
-/* line 267, ../scss/screen.scss */
+/* line 282, ../scss/screen.scss */
 .loading .message {
   position: relative;
   top: 20px;
@@ -4769,10 +4783,10 @@ footer .copyright {
   max-width: 250px;
 }
 
-/* line 275, ../scss/screen.scss */
+/* line 290, ../scss/screen.scss */
 .spinner {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   margin: 0 auto;
   border-radius: 100%;
   border: 6px solid transparent;
@@ -4787,7 +4801,7 @@ footer .copyright {
   transition: all 0.1s ease-in;
 }
 
-/* line 292, ../scss/screen.scss */
+/* line 307, ../scss/screen.scss */
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -4798,13 +4812,13 @@ footer .copyright {
 }
 
 @keyframes spinner {
-  /* line 302, ../scss/screen.scss */
+  /* line 317, ../scss/screen.scss */
   0% {
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 307, ../scss/screen.scss */
+  /* line 322, ../scss/screen.scss */
   100% {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -4812,24 +4826,24 @@ footer .copyright {
 }
 
 @-webkit-keyframes spinner {
-  /* line 313, ../scss/screen.scss */
+  /* line 328, ../scss/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 317, ../scss/screen.scss */
+  /* line 332, ../scss/screen.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @-moz-keyframes spinner {
-  /* line 322, ../scss/screen.scss */
+  /* line 337, ../scss/screen.scss */
   0% {
     -moz-transform: rotate(0deg);
   }
 
-  /* line 326, ../scss/screen.scss */
+  /* line 341, ../scss/screen.scss */
   100% {
     -moz-transform: rotate(360deg);
   }
