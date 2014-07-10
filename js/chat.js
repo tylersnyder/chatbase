@@ -46,31 +46,32 @@ var chat = function(user) {
           count++;
 
           var timestamp = $(this).get(0).timestamp,
-              text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
+              message = $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
                  return "&#" + c.charCodeAt() + ";";
-              }); + '</span>',
+              }),
+              username = $(this).get(0).user,
               self = user.displayName;
 
-          text = text.replace(':emoji-start:', '<div class="');
-          text = text.replace(':emoji-end:', '"></div>');
+          message = message.replace(':emoji-start:', '<div class="');
+          message = message.replace(':emoji-end:', '"></div>');
 
-          if (self == $(this).get(0).user) {
-            var name = '<span class="user" data-self="true">' + $(this).get(0).user + '</span>';
+          if (self == username) {
+            var name = '<span class="user">' + username + '</span>';
           } else {
-            var name = '<span class="user" data-timestamp title="' + timestamp + '">' + $(this).get(0).user + '</span>';
+            var name = '<span class="user">' + username + '</span>';
           }
 
-          if (count != 0 && $(this).get(0).user == prev) {
+          if (count != 0 && username == prev) {
             name = '';
           }
 
-          if (self == $(this).get(0).user) {
-            chatbox.append(name+'<div class="message" data-self="true" data-timestamp title="' + timestamp + '">' + text + '</div>' );
+          if (self == username) {
+            chatbox.append(name+'<div class="message" data-self="true" data-timestamp title="' + timestamp + '">' + message + '</div>' );
           } else {
-            chatbox.append(name+'<div class="message" data-timestamp title="' + timestamp + '">' + text + '</div>');
+            chatbox.append(name+'<div class="message" data-timestamp title="' + timestamp + '">' + message + '</div>');
           }
 
-          prev = $(this).get(0).user;
+          prev = username;
         })
 
         var ping = new Audio('iphone-sms.mp3');
