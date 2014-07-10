@@ -254,6 +254,11 @@ footer {
     text-align: center;
     @extend .clearfix;
 
+    .emoji-picker {
+      margin: 0 5px;
+      @extend .clearfix;
+    }
+
     .emoji {
       float: left;
 

@@ -4508,11 +4508,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* line 23, ../scss/screen.scss */
-.clearfix, .button.logout:not(.hide), .button[data-chat=send], footer, .chat .chat-box, .chat .emoji-box, .chat .input-box {
+.clearfix, .button.logout:not(.hide), .button[data-chat=send], footer, .chat .chat-box, .chat .emoji-box, .chat .emoji-box .emoji-picker, .chat .input-box {
   float: left;
 }
 /* line 27, ../scss/screen.scss */
-.clearfix:before, .button.logout:not(.hide):before, .button[data-chat=send]:before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .chat .input-box:before, .clearfix:after, .button.logout:not(.hide):after, .button[data-chat=send]:after, footer:after, .chat .chat-box:after, .chat .emoji-box:after, .chat .input-box:after {
+.clearfix:before, .button.logout:not(.hide):before, .button[data-chat=send]:before, footer:before, .chat .chat-box:before, .chat .emoji-box:before, .chat .emoji-box .emoji-picker:before, .chat .input-box:before, .clearfix:after, .button.logout:not(.hide):after, .button[data-chat=send]:after, footer:after, .chat .chat-box:after, .chat .emoji-box:after, .chat .emoji-box .emoji-picker:after, .chat .input-box:after {
   display: block;
   clear: both;
 }
@@ -4751,20 +4751,24 @@ footer .copyright {
   text-align: center;
 }
 /* line 257, ../scss/screen.scss */
+.chat .emoji-box .emoji-picker {
+  margin: 0 5px;
+}
+/* line 262, ../scss/screen.scss */
 .chat .emoji-box .emoji {
   float: left;
 }
-/* line 260, ../scss/screen.scss */
+/* line 265, ../scss/screen.scss */
 .chat .emoji-box .emoji:hover {
   cursor: pointer;
 }
-/* line 266, ../scss/screen.scss */
+/* line 271, ../scss/screen.scss */
 .chat .input-box {
   position: relative;
   width: 100%;
 }
 
-/* line 273, ../scss/screen.scss */
+/* line 278, ../scss/screen.scss */
 pre {
   padding: 5px 10px;
   border-radius: 6px;
@@ -4775,7 +4779,7 @@ pre {
   color: #444;
 }
 
-/* line 283, ../scss/screen.scss */
+/* line 288, ../scss/screen.scss */
 .loading {
   width: 100%;
   height: 100%;
@@ -4785,7 +4789,7 @@ pre {
   background-color: #fff;
   text-align: center;
 }
-/* line 292, ../scss/screen.scss */
+/* line 297, ../scss/screen.scss */
 .loading .message {
   position: relative;
   top: 20px;
@@ -4793,7 +4797,7 @@ pre {
   max-width: 250px;
 }
 
-/* line 300, ../scss/screen.scss */
+/* line 305, ../scss/screen.scss */
 .spinner {
   height: 30px;
   width: 30px;
@@ -4811,7 +4815,7 @@ pre {
   transition: all 0.1s ease-in;
 }
 
-/* line 317, ../scss/screen.scss */
+/* line 322, ../scss/screen.scss */
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -4822,13 +4826,13 @@ pre {
 }
 
 @keyframes spinner {
-  /* line 327, ../scss/screen.scss */
+  /* line 332, ../scss/screen.scss */
   0% {
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 332, ../scss/screen.scss */
+  /* line 337, ../scss/screen.scss */
   100% {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -4836,24 +4840,24 @@ pre {
 }
 
 @-webkit-keyframes spinner {
-  /* line 338, ../scss/screen.scss */
+  /* line 343, ../scss/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 342, ../scss/screen.scss */
+  /* line 347, ../scss/screen.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @-moz-keyframes spinner {
-  /* line 347, ../scss/screen.scss */
+  /* line 352, ../scss/screen.scss */
   0% {
     -moz-transform: rotate(0deg);
   }
 
-  /* line 351, ../scss/screen.scss */
+  /* line 356, ../scss/screen.scss */
   100% {
     -moz-transform: rotate(360deg);
   }
