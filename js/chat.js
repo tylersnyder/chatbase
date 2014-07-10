@@ -45,8 +45,8 @@ var chat = function(user) {
         $.each(snapshot.val(), function() {
           count++;
 
-          var timestamp =$(this).get(0).timestamp ,
-               text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
+          var timestamp = $(this).get(0).timestamp,
+              text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
                  return "&#" + c.charCodeAt() + ";";
               }); + '</span>',
               self = user.displayName;
