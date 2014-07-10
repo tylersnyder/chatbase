@@ -1,4 +1,10 @@
-var count = 0;
+var count = 0,
+    chatbox = $('.chat .chat-box'),
+    date = new Date(),
+    d = date.toDateString(),
+    t = date.toLocaleTimeString(),
+    timestamp = new Date().getUTCMilliseconds();
+
 var messages = new Firebase(firebaseURL + '/chat/messages');
 var chat = function(user) {
   count = 0;
@@ -22,11 +28,6 @@ var chat = function(user) {
     chat.form('hide');
   }
 
-  var chatbox = $('.chat .chat-box'),
-      date = new Date(),
-      d = date.toDateString(),
-      t = date.toLocaleTimeString(),
-      timestamp = new Date().getUTCMilliseconds();
 
   this.get = function() {
     messages.on('value', function(snapshot) {
@@ -49,6 +50,11 @@ var chat = function(user) {
                  return "&#" + c.charCodeAt() + ";";
               }); + '</span>',
               self = user.displayName;
+
+          console.log(text);
+          text = text.replace(':emoji-start:', '<div class="');
+          text = text.replace(':emoji-end:', '"></div>');
+          console.log(text);
 
           if (self == $(this).get(0).user) {
             var name = '<span class="user" data-self="true">' + $(this).get(0).user + '</span>';
@@ -79,7 +85,7 @@ var chat = function(user) {
   this.send = function() {
     var message = $('#chat-message').val();
 
-
+    if (preventInjection(message) == true) {
       messages.push({
         'date': d,
         'timestamp': t,
@@ -90,7 +96,7 @@ var chat = function(user) {
       window.setTimeout(function() {
         chat.form('reset');
       }, 500);
-    
+    }
   }
 
   this.bind = function(selector, data) {
@@ -171,6 +177,21 @@ var chat = function(user) {
   this.destroy = function() {
     $('.chat').remove();
   }
+
+  function insertEmoji(emoji) {
+    var classes = $(emoji).attr('class');
+
+    messages.push({
+      'date': d,
+      'timestamp': t,
+      'user': user.displayName,
+      'message': ':emoji-start:'+ classes + ':emoji-end:'
+    })
+  }
+
+  $('.emoji-box .emoji').on('click', function() {
+    insertEmoji(this);
+  })
 }
 
 $('[data-chat=send]').click(function (e) {
