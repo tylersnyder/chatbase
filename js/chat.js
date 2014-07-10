@@ -129,9 +129,9 @@ var chat = function(user) {
       case 'sent':
         chat.spinner('show');
         $('.chat .button').attr('disabled', true);
+        chat.form('reset');
         window.setTimeout(function() {
           chat.spinner('hide');
-          chat.form('reset');
           $('.chat .button').removeAttr('disabled');
         }, 500);
         break;
