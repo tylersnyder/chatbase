@@ -4766,6 +4766,17 @@ footer .copyright {
 }
 
 /* line 273, ../scss/screen.scss */
+pre {
+  padding: 5px 10px;
+  border-radius: 6px;
+  background-color: #ddd;
+  box-shadow: 0 0 3px #888 inset;
+  display: block;
+  font-family: inherit;
+  color: #444;
+}
+
+/* line 283, ../scss/screen.scss */
 .loading {
   width: 100%;
   height: 100%;
@@ -4775,7 +4786,7 @@ footer .copyright {
   background-color: #fff;
   text-align: center;
 }
-/* line 282, ../scss/screen.scss */
+/* line 292, ../scss/screen.scss */
 .loading .message {
   position: relative;
   top: 20px;
@@ -4783,7 +4794,7 @@ footer .copyright {
   max-width: 250px;
 }
 
-/* line 290, ../scss/screen.scss */
+/* line 300, ../scss/screen.scss */
 .spinner {
   height: 30px;
   width: 30px;
@@ -4801,7 +4812,7 @@ footer .copyright {
   transition: all 0.1s ease-in;
 }
 
-/* line 307, ../scss/screen.scss */
+/* line 317, ../scss/screen.scss */
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -4812,13 +4823,13 @@ footer .copyright {
 }
 
 @keyframes spinner {
-  /* line 317, ../scss/screen.scss */
+  /* line 327, ../scss/screen.scss */
   0% {
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 322, ../scss/screen.scss */
+  /* line 332, ../scss/screen.scss */
   100% {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -4826,24 +4837,24 @@ footer .copyright {
 }
 
 @-webkit-keyframes spinner {
-  /* line 328, ../scss/screen.scss */
+  /* line 338, ../scss/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
   }
 
-  /* line 332, ../scss/screen.scss */
+  /* line 342, ../scss/screen.scss */
   100% {
     -webkit-transform: rotate(360deg);
   }
 }
 
 @-moz-keyframes spinner {
-  /* line 337, ../scss/screen.scss */
+  /* line 347, ../scss/screen.scss */
   0% {
     -moz-transform: rotate(0deg);
   }
 
-  /* line 341, ../scss/screen.scss */
+  /* line 351, ../scss/screen.scss */
   100% {
     -moz-transform: rotate(360deg);
   }

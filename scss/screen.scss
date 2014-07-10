@@ -270,6 +270,16 @@ footer {
   }
 }
 
+pre {
+	padding: 5px 10px;
+	border-radius: 6px;
+	background-color: #ddd;
+  box-shadow: 0 0 3px #888 inset;
+  display: block;
+  font-family: inherit;
+  color: #444;
+}
+
 .loading {
   width: 100%;
   height: 100%;
