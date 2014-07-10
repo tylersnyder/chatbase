@@ -4647,8 +4647,8 @@ h3 {
 /* line 151, ../scss/screen.scss */
 .form span.error {
   position: absolute;
-  right: 10px;
-  top: 14px;
+  top: 10px;
+  right: 11px;
   color: tomato;
 }
 /* line 157, ../scss/screen.scss */
