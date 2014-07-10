@@ -3,9 +3,9 @@ var count = 0,
     date = new Date(),
     d = date.toDateString(),
     t = date.toLocaleTimeString(),
-    timestamp = new Date().getUTCMilliseconds();
+    timestamp = new Date().getUTCMilliseconds(),
+    messages = new Firebase(firebaseURL + '/chat/messages');
 
-var messages = new Firebase(firebaseURL + '/chat/messages');
 var chat = function(user) {
   count = 0;
 
@@ -16,10 +16,11 @@ var chat = function(user) {
 
     window.setInterval(function() {
       chat.get();
-    }, 3000);
+    }, 1000);
   }
 
   this.open = function() {
+    $('#chat-message').focus();
     chat.scroll('to-bottom');
     chat.form('show');
   }
@@ -28,16 +29,9 @@ var chat = function(user) {
     chat.form('hide');
   }
 
-
   this.get = function() {
     messages.on('value', function(snapshot) {
-      //console.log(snapshot.val());
-      //console.log('length: '  + Object.size(snapshot.val()));
-	    //console.log('count: ' + count);
-	    //console.log(JSON.stringify(snapshot.val()));
-
   	  if (count == 0 | Object.size(snapshot.val()) > count) {
-    	  //console.log('new message');
     	  chatbox.empty();
     		count = 0;
         var prev = '';
@@ -45,42 +39,23 @@ var chat = function(user) {
         $.each(snapshot.val(), function() {
           count++;
 
-<<<<<<< HEAD
-          var timestamp =$(this).get(0).timestamp ,
-<<<<<<< HEAD
-               text = '<span class="text">' + escapeHtml($(this).get(0).message)+ '</span>',
-=======
           var timestamp = $(this).get(0).timestamp,
+              username = $(this).get(0).user,
+              self = user.displayName,
               message = $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
                  return "&#" + c.charCodeAt() + ";";
-              }),
-              username = $(this).get(0).user,
->>>>>>> origin/master
-=======
-               text = '<span class="text">' + $(this).get(0).message.replace(/[<&>'"]/g, function(c) {
-                 return "&#" + c.charCodeAt() + ";";
-              }); + '</span>',
->>>>>>> parent of 4fa3adf... Script Detection
-              self = user.displayName;
+              });
 
           message = message.replace(':emoji-start:', '<div class="');
           message = message.replace(':emoji-end:', '"></div>');
 
-          if (self == username) {
-            var name = '<span class="user" data-self="true">' + username + '</span>';
-          } else {
-            var name = '<span class="user">' + username + '</span>';
-          }
+          var name = (self == username) ? '<span class="user" data-self="true">' + username + '</span>' : '<span class="user">' + username + '</span>';
 
           if (count != 0 && username == prev) {
             name = '';
           }
 
-          if (self == username) {
-            chatbox.append(name+'<div class="message" data-self="true" data-timestamp title="' + timestamp + '">' + message + '</div>' );
-          } else {
-            chatbox.append(name+'<div class="message" data-timestamp title="' + timestamp + '">' + message + '</div>');
-          }
+          (self == username) ? chatbox.append(name + '<div class="message" data-self="true" data-timestamp title="' + timestamp + '">' + message + '</div>' ) : chatbox.append(name + '<div class="message" data-timestamp title="' + timestamp + '">' + message + '</div>');
 
           prev = username;
         })
@@ -93,8 +68,6 @@ var chat = function(user) {
   }
 
   this.send = function() {
-    chat.spinner('show');
-    $('input').attr('disabled', true);
     var message = $('#chat-message').val();
 
     messages.push({
@@ -104,19 +77,7 @@ var chat = function(user) {
       'message': message
     })
 
-    window.setTimeout(function() {
-      chat.spinner('hide');
-      chat.form('reset');
-      $('input').removeAttr('disabled').focus();
-    }, 500);
-  }
-
-  this.bind = function(selector, data) {
-    if ($(selector).is(':input')) {
-      $(selector).val(data);
-    } else {
-      $(selector).text(data);
-    }
+    chat.spinner('sent');
   }
 
   this.form = function(action) {
@@ -138,8 +99,7 @@ var chat = function(user) {
         $('.chat .form :input').val('');
         break;
 
-      default:
-        return;
+      default: return;
     }
   }
 
@@ -154,14 +114,29 @@ var chat = function(user) {
   }
 
   this.spinner = function(action, text) {
-    if (action == 'show') {
-      chat.scroll('disable');
+    switch (action) {
+      case 'show':
+        chat.scroll('disable');
+        $('.loading .message').text(text);
+        $('.loading').removeClass('hide');
+        break;
 
-      $('.loading .message').text(text);
-      $('.loading').removeClass('hide');
-    } else if (action == 'hide') {
-      chat.scroll('enable');
-      $('.loading').addClass('hide');
+      case 'hide':
+        chat.scroll('enable');
+        $('.loading').addClass('hide');
+        break;
+
+      case 'sent':
+        chat.spinner('show');
+        $('input').attr('disabled', true);
+        window.setTimeout(function() {
+          chat.spinner('hide');
+          chat.form('reset');
+          $('input').removeAttr('disabled').focus();
+        }, 500);
+        break;
+
+      default: return;
     }
   }
 
@@ -181,8 +156,15 @@ var chat = function(user) {
         }, 1000);
         break;
 
-      default:
-        return;
+      default: return;
+    }
+  }
+
+  this.bind = function(selector, data) {
+    if ($(selector).is(':input')) {
+      $(selector).val(data);
+    } else {
+      $(selector).text(data);
     }
   }
 
@@ -192,32 +174,24 @@ var chat = function(user) {
 
   function insertEmoji(emoji) {
     var classes = $(emoji).attr('class');
-    chat.spinner('show');
-    $('input').attr('disabled', true);
-
-    window.setTimeout(function() {
-      chat.spinner('hide');
-      chat.form('reset');
-      $('input').removeAttr('disabled').focus();
-    }, 500);
-
     messages.push({
       'date': d,
       'timestamp': t,
       'user': user.displayName,
       'message': ':emoji-start:'+ classes + ':emoji-end:'
     })
+
+    chat.spinner('sent');
   }
 
-  $('.emoji-box .emoji').on('click', function() {
+  $('.emoji-box .emoji').click(function() {
     insertEmoji(this);
   })
+
+  $('[data-chat=send]').click(function (e) {
+    e.preventDefault();
+    if ($('.chat form').h5Validate('allValid') === true) {
+      chat.send();
+    }
+  });
 }
-
-$('[data-chat=send]').click(function (e) {
-  e.preventDefault();
-
-  if ($('.chat form').h5Validate('allValid') === true) {
-    chat.send();
-  }
-});
