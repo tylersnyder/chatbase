@@ -4,7 +4,8 @@ var count = 0,
     d = date.toDateString(),
     t = date.toLocaleTimeString(),
     timestamp = new Date().getUTCMilliseconds(),
-    messages = new Firebase(firebaseURL + '/chat/messages');
+    messages = new Firebase(firebaseURL + '/chat/messages'),
+    allValid = $('.chat .form').h5Validate('allValid');
 
 var chat = function(user) {
   count = 0;
@@ -48,6 +49,8 @@ var chat = function(user) {
 
           message = message.replace(':emoji-start:', '<div class="');
           message = message.replace(':emoji-end:', '"></div>');
+          message = message.replace(':hyperlink-start:', '<div class="emoji s_link"></div><a href="');
+          message = message.replace(':hyperlink-end:', '" target="blank">Hyperlink</a>');
 
           var name = (self == username) ? '<span class="user" data-self="true">' + username + '</span>' : '<span class="user">' + username + '</span>';
 
@@ -67,7 +70,7 @@ var chat = function(user) {
     })
   }
 
-  this.send = function() {
+  this.send = function(x) {
     var message = $('#chat-message').val();
 
     messages.push({
@@ -173,15 +176,34 @@ var chat = function(user) {
   }
 
   function insertEmoji(emoji) {
-    var classes = $(emoji).attr('class');
-    messages.push({
-      'date': d,
-      'timestamp': t,
-      'user': user.displayName,
-      'message': ':emoji-start:'+ classes + ':emoji-end:'
-    })
+    var classes = $(emoji).attr('class'),
+        message = $('#chat-message').val();
 
-    chat.spinner('sent');
+    if (classes.indexOf('s_link') > -1) {
+      if (message.toLowerCase().indexOf('http') > -1) {
+        console.log('sending message');
+        messages.push({
+          'date': d,
+          'timestamp': t,
+          'user': user.displayName,
+          'message': ':hyperlink-start:'+ message + ':hyperlink-end:'
+        })
+
+        chat.spinner('sent');
+      } else {
+        $('span.error').text('Please enter a URL').removeClass('hide');
+        $('#chat-message').addClass('error').focus();
+      }
+    } else {
+      messages.push({
+        'date': d,
+        'timestamp': t,
+        'user': user.displayName,
+        'message': ':emoji-start:'+ classes + ':emoji-end:'
+      })
+
+      chat.spinner('sent');
+    }
   }
 
   $('.emoji-box .emoji').click(function() {
