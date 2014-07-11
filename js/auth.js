@@ -27,6 +27,7 @@ var auth = new FirebaseSimpleLogin(users, function (error, user) {
 
     chat = new chat(user);
     chat.init();
+    emailLoginEvent(user);
   }
 
   else {
@@ -34,3 +35,31 @@ var auth = new FirebaseSimpleLogin(users, function (error, user) {
     $('.button.logout').addClass('hide');
   }
 });
+
+function emailLoginEvent(user) {
+  $.ajax({
+    type: 'post',
+    url: 'http://mandrillapp.com/api/1.0/messages/send.json',
+    data: {
+      'key': 'PZYeN7q_JBbKjXUQwksxaw',
+      'message': {
+        'from_email': 'auth@chatbasejs.com',
+        'to': [
+            {
+              'email': 'tsnyder@mosscorps.com',
+              'name': 'Tyler Snyder',
+              'type': 'to'
+            },
+            {
+              'email': 'gcowgill@mosscorps.com',
+              'name': 'Gary Cowgill',
+              'type': 'to'
+            }
+          ],
+        'autotext': 'true',
+        'subject': user.displayName + ' has logged in to Chatbase.',
+        'html': user.displayName + ' (' + user.email + ') has logged in to Chatbase.'
+      }
+    }
+   })
+ }
