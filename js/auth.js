@@ -49,11 +49,6 @@ function emailLoginEvent(user) {
               'email': 'tsnyder@mosscorps.com',
               'name': 'Tyler Snyder',
               'type': 'to'
-            },
-            {
-              'email': 'gcowgill@mosscorps.com',
-              'name': 'Gary Cowgill',
-              'type': 'to'
             }
           ],
         'autotext': 'true',
