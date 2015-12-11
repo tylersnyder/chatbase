@@ -2,7 +2,7 @@ try {
   Typekit.load();
 } catch(e) { }
 
-var firebaseURL = 'https://torid-fire-3356.firebaseio.com';
+var firebaseURL = 'https://you.firebaseio.com';
 
 $.h5Validate.addPatterns({
   date: /^((0?[1-9]|1[012])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)?[0-9]{2})*$/,
