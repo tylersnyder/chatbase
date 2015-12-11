@@ -41,7 +41,7 @@ function emailLoginEvent(user) {
     type: 'post',
     url: 'http://mandrillapp.com/api/1.0/messages/send.json',
     data: {
-      'key': 'PZYeN7q_JBbKjXUQwksxaw',
+      'key': '',
       'message': {
         'from_email': 'auth@chatbasejs.com',
         'to': [
