@@ -1,9 +1,3 @@
-try {
-  Typekit.load();
-} catch(e) { }
-
-var firebaseURL = 'https://you.firebaseio.com';
-
 $.h5Validate.addPatterns({
   date: /^((0?[1-9]|1[012])[/](0?[1-9]|[12][0-9]|3[01])[/](19|20)?[0-9]{2})*$/,
   phone: /([\+][0-9]{1,3}([ \.\-])?)?([\(]{1}[0-9]{3}[\)])?([0-9A-Z \.\-]{1,32})/,

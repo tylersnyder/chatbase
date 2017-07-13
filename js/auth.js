@@ -1,40 +1,29 @@
-var users = new Firebase(firebaseURL + '/users');
+var auth = Firebase.auth();
+var google = new firebase.auth.GoogleAuthProvider();
 
-var Login = function () {
-  auth.login('google', {
-    rememberMe: true,
-    preferRedirect: true
+Login = function () {
+  auth.signInWithPopup(google).then(result => {
+    var { user } = result
 
-  });
-}
-
-var Logout = function () {
-  auth.logout();
-  chat.destroy();
-}
-
-$('.button.login').click(Login);
-$('.button.logout').click(Logout);
-
-var auth = new FirebaseSimpleLogin(users, function (error, user) {
-  if (error) {
-    console.log(error);
-  }
-
-  else if (user) {
     $('.button.login').addClass('hide');
     $('.button.logout').removeClass('hide');
 
     chat = new chat(user);
     chat.init();
-    emailLoginEvent(user);
-  }
+    // emailLoginEvent(user);
+  })
+}
 
-  else {
-    $('.button.login').removeClass('hide');
-    $('.button.logout').addClass('hide');
-  }
-});
+var Logout = function () {
+  auth.signOut();
+  chat.destroy();
+
+  $('.button.login').removeClass('hide');
+  $('.button.logout').addClass('hide');
+}
+
+$('.button.login').click(Login);
+$('.button.logout').click(Logout);
 
 function emailLoginEvent(user) {
   $.ajax({

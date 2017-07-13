@@ -4,7 +4,7 @@ var count = 0,
     d = date.toDateString(),
     t = date.toLocaleTimeString(),
     timestamp = new Date().getUTCMilliseconds(),
-    messages = new Firebase(firebaseURL + '/chat/messages'),
+    messages = Firebase.database().ref('/chat/messages'),
     allValid = $('.chat .form').h5Validate('allValid');
 
 var chat = function(user) {
