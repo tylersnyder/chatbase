@@ -5,12 +5,14 @@ $.h5Validate.addPatterns({
   zip: /^\d{5}$/
 })
 
-$('.chat .form').h5Validate();
+$('.chat .form').h5Validate()
 
 Object.size = function(obj) {
-    var size = 0, key;
+    var size = 0, key
+
     for (key in obj) {
-        if (obj.hasOwnProperty(key)) size++;
+        if (obj.hasOwnProperty(key)) size++
     }
-    return size;
+
+    return size
 }
