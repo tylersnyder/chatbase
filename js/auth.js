@@ -1,19 +1,26 @@
 var auth = Firebase.auth()
 var google = new firebase.auth.GoogleAuthProvider()
 
-Login = function () {
-  auth.signInWithPopup(google).then(result => {
-    var { user } = result
+auth.onAuthStateChanged((result) => {
+  receiveUser(result)
+})
 
-    $('.button.login').addClass('hide')
-    $('.button.logout').removeClass('hide')
+function receiveUser(user) {
+  $('.button.login').addClass('hide')
+  $('.button.logout').removeClass('hide')
 
-    chat = new chat(user)
-    chat.init()
-  })
+  chat = new chat(user)
+  chat.init()
 }
 
-var Logout = function () {
+function login() {
+  auth.signInWithPopup(google)
+    .then(function(result) {
+      receiveUser(result.user)
+    })
+}
+
+function logout() {
   auth.signOut()
   chat.destroy()
 
@@ -21,5 +28,5 @@ var Logout = function () {
   $('.button.logout').addClass('hide')
 }
 
-$('.button.login').click(Login)
-$('.button.logout').click(Logout)
+$('.button.login').click(login)
+$('.button.logout').click(logout)
