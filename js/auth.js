@@ -6,11 +6,13 @@ auth.onAuthStateChanged((result) => {
 })
 
 function receiveUser(user) {
+  $('.chat').removeClass('hide')
   $('.button.login').addClass('hide')
   $('.button.logout').removeClass('hide')
+  $('.js-chat--user').val(JSON.stringify(user))
 
-  chat = new chat(user)
-  chat.init()
+  // chat = new chat(user)
+  // chat.init()
 }
 
 function login() {

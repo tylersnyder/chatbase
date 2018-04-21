@@ -8,7 +8,15 @@
   <link rel="stylesheet" href="css/screen.css?v=1.0" media="screen" type="text/css" />
   <script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
   <script>
-    var config = YOUR_FIREBASE_CONFIG
+    var config = {
+      apiKey: 'AIzaSyB8ZLA0CVQsa84wgH_lAewqg1C40HrDOhk',
+      authDomain: 'chatbase-a3e24.firebaseapp.com',
+      databaseURL: 'https://chatbase-a3e24.firebaseio.com',
+      projectId: 'chatbase-a3e24',
+      storageBucket: 'chatbase-a3e24.appspot.com',
+      messagingSenderId: '654571602466'
+    }
+
     var Firebase = firebase.initializeApp(config)
   </script>
 </head>
@@ -21,7 +29,7 @@
     <a class="button" data-chat="open" href="#">Chat</a>
     <form class="form" data-chat="form">
       <div class="close" data-chat="close"></div>
-      <div class="chat-box"></div>
+      <div class="chat-box js-chat--log"></div>
       <div class="emoji-box">
         <ul class="emoji-picker">
           <li class="emoji s_smile"></li>
@@ -43,9 +51,10 @@
       </div>
       <div class="input-box">
         <span id="chat-message-error" class="error hide"></span>
-        <input type="text" id="chat-message" name="chat-message" data-error-id="chat-message-error" data-error-message="required" placeholder="Type your message" required>
+        <input class="js-chat--text" type="text" placeholder="Type your message" required />
+        <input class="js-chat--user" type="hidden" />
       </div>
-      <button class="button" data-chat="send">
+      <button class="button js-chat--send">
         <div class="loading hide">
           <div class="absolute-center">
             <div class="spinner"></div>
@@ -65,9 +74,9 @@
   </footer>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="js/validate.js"></script>
-  <script src="js/index.js"></script>
+  <!-- <script src="js/validate.js"></script>  -->
   <script src="js/auth.js"></script>
-  <script src="js/chat.js"></script>
+  <script src="js/index.js"></script>
+  <!-- <script src="js/chat.js"></script> -->
 </body>
 </html>
